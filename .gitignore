@@ -1,0 +1,93 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+generated_plugin_registrant.dart
+
+# iOS
+ios/Flutter/.last_build_id
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Runner.xcodeproj/project.xcworkspace/
+ios/Runner.xcodeproj/xcuserdata/
+ios/Runner.xcworkspace/xcuserdata/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/ephemeral/
+ios/.symlinks/
+ios/.generated/
+ios/ServiceDefinitions.json
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/.cxx/
+android/key.properties
+
+# VS Code
+.vscode/
+
+# IntelliJ related
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# macOS
+macos/Flutter/ephemeral/
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/build/
+macos/Pods/
+macos/Runner.xcworkspace/
+macos/Runner.xcodeproj/project.xcworkspace/
+macos/Runner.xcodeproj/xcuserdata/
+macos/Runner.xcworkspace/xcuserdata/
+
+# Windows
+windows/Flutter/ephemeral/
+windows/build/
+windows/Runner/GeneratedPluginRegistrant.*
+windows/Runner.xcworkspace/
+windows/Runner.xcodeproj/project.xcworkspace/
+windows/Runner.xcodeproj/xcuserdata/
+windows/Runner.xcworkspace/xcuserdata/
+
+# Linux
+linux/Flutter/ephemeral/
+linux/build/
+linux/Runner/GeneratedPluginRegistrant.*
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Others
+*.lock
