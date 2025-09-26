@@ -91,3 +91,6 @@ app.*.map.json
 
 # Others
 *.lock
+
+# remove all my-release-key.jks files in any folder
+**/my-release-key.jks

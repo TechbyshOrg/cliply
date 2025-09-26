@@ -1,4 +1,4 @@
-package com.example.copy_paste
+package com.techbysh.cliply
 
 import io.flutter.embedding.android.FlutterActivity
 
