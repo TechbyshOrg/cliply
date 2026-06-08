@@ -35,6 +35,7 @@ android/local.properties
 android/.idea/
 android/.cxx/
 android/key.properties
+*keystore.txt
 
 # VS Code
 .vscode/
