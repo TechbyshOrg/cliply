@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:hive/hive.dart';
+import 'package:cliply/models/item.dart';
 import 'package:cliply/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  setUpAll(() async {
+    // Set up a temporary directory for Hive to store test data
+    final tempDir = Directory.systemTemp.createTempSync('cliply_test_hive');
+    Hive.init(tempDir.path);
+    // Register ItemAdapter if it's not already registered
+    if (!Hive.isAdapterRegistered(1)) {
+      Hive.registerAdapter(ItemAdapter());
+    }
+  });
+
+  setUp(() async {
+    await Hive.openBox<Item>('itemsBox');
+  });
+
+  tearDown(() async {
+    await Hive.close();
+  });
+
+  testWidgets('Cliply app renders and displays brand header', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
+    await tester.pumpAndSettle();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the brand name "Cliply" is displayed.
+    expect(find.text('Cliply'), findsOneWidget);
   });
 }
