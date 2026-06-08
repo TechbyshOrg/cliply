@@ -20,19 +20,31 @@ class ItemAdapter extends TypeAdapter<Item> {
       id: fields[0] as int,
       title: fields[1] as String,
       content: fields[2] as String,
+      isPinned: fields[3] as bool?,
+      isFavorite: fields[4] as bool?,
+      updatedAt: fields[5] as DateTime?,
+      type: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Item obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.content);
+      ..write(obj.content)
+      ..writeByte(3)
+      ..write(obj.isPinned)
+      ..writeByte(4)
+      ..write(obj.isFavorite)
+      ..writeByte(5)
+      ..write(obj.updatedAt)
+      ..writeByte(6)
+      ..write(obj.type);
   }
 
   @override

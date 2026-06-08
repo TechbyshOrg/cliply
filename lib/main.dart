@@ -1,4 +1,5 @@
-import 'package:cliply/pages/HomePage.dart';
+import 'package:cliply/pages/home_page.dart';
+import 'package:cliply/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cliply/models/item.dart';
@@ -6,23 +7,28 @@ import 'package:cliply/models/item.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(ItemAdapter()); // <-- Register your adapter
-  await Hive.openBox<Item>('itemsBox'); // <-- Specify the type
+  Hive.registerAdapter(ItemAdapter());
+  await Hive.openBox<Item>('itemsBox');
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Homepage(),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: AppTheme.themeModeNotifier,
+      builder: (context, currentThemeMode, _) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Cliply',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: currentThemeMode,
+          home: const Homepage(),
+        );
+      },
     );
   }
 }
