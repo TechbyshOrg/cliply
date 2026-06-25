@@ -10,3 +10,7 @@
 -keep class com.hivedb.** { *; }
 -keep class * extends io.hive.** { *; }
 -keep interface io.hive.** { *; }
+
+# Ignore missing Play Core classes referenced by the Flutter embedding library
+-dontwarn com.google.android.play.core.**
+
